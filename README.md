@@ -1,6 +1,13 @@
 # santa_flutter
 
 
+### use
+```
+sudo flutter run --no-sound-null-safety
+```
+
+## Santa 구성
+
 ### Native : Flutter
 
 ### F :  Thymeleaf , Vue js 
