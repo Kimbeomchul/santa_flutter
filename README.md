@@ -6,7 +6,11 @@ jenkins : http://ec2-3-35-21-136.ap-northeast-2.compute.amazonaws.com:9090/
 app test server : http://ec2-3-35-21-136.ap-northeast-2.compute.amazonaws.com:8080
 jupyter : http://ec2-3-35-21-136.ap-northeast-2.compute.amazonaws.com:8888/
 
-
+Jenkins
+1. ERROR: Couldn't find any revision to build. Verify the repository and branch configuration for this job.
+  */master -> */main 으로 브랜치 변경 후 재시도
+  
+2. 웹훅걸고 자동배포시 EC2 멈춤현상
 
 ### how to use
 ```
