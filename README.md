@@ -1,6 +1,13 @@
 # santa_flutter
 
-- https://github.com/Kimbeomchul/santa_v3
+Main file - https://github.com/Kimbeomchul/santa_v3
+
+jenkins : http://ec2-3-35-21-136.ap-northeast-2.compute.amazonaws.com:9090/
+app test server : http://ec2-3-35-21-136.ap-northeast-2.compute.amazonaws.com:8080
+jupyter : http://ec2-3-35-21-136.ap-northeast-2.compute.amazonaws.com:8888/
+
+
+
 ### how to use
 ```
 sudo pub get
