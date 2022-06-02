@@ -2,15 +2,24 @@
 
 Main file - https://github.com/Kimbeomchul/santa_v3
 
-jenkins : http://ec2-3-35-21-136.ap-northeast-2.compute.amazonaws.com:9090/
-app test server : http://ec2-3-35-21-136.ap-northeast-2.compute.amazonaws.com:8080
-jupyter : http://ec2-3-35-21-136.ap-northeast-2.compute.amazonaws.com:8888/
+jenkins : http://3.35.246.73:9090/
+app test server : http://3.35.246.73:8080/
+jupyter : http://3.35.246.73:8888/
 
 Jenkins
 1. ERROR: Couldn't find any revision to build. Verify the repository and branch configuration for this job.
   */master -> */main 으로 브랜치 변경 후 재시도
   
-2. 웹훅걸고 자동배포시 EC2 멈춤현상
+2. 웹훅걸고 자동배포시 EC2 멈춤현상 ( cpu 99% )
+
+보안
+1. 검색창 % 검색시 서버죽음
+2. 패킷전송으로 유저정보 볼수있음 (수정도가능)
+3. 커뮤니티글 다른사람이 수정가능 
+4. 파일확장자 강제변경가능 (완료) 
+5. 에러페이지 400 , 500
+6. XSS - naver lucy 추가 (완료)
+7. File 확장자 ,용량 검증 (완료)
 
 ### how to use
 ```
