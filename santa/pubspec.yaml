@@ -50,7 +50,7 @@ dev_dependencies:
       path: flutter_webview_pro
 
   flutter_lints: ^1.0.0
-  #webview_flutter: 2.0.13
+  #webview_flutter: ^2.0.13
   transition : ^2.0.2
   http : ^0.13.4
   geolocator: ^8.0.5
@@ -73,7 +73,7 @@ flutter:
 
   assets:
     - assets/CI.gif
-    - assets/Design.jpeg
+    - assets/Design.png
   # To add assets to your application, add an assets section, like this:
   # assets:
   #   - images/a_dot_burr.jpeg

@@ -17,7 +17,7 @@ class ViewWidget extends StatefulWidget {
 }
 
 class _ViewState extends State<ViewWidget> {
-  var serverURL = "http://3.35.246.73:8080";
+  var serverURL = "https://santa.cf";
   bool isLoading = true;
   late WebViewController _webViewController;
   late String _url;
@@ -44,14 +44,13 @@ class _ViewState extends State<ViewWidget> {
                   _webViewController = webViewController;
                 },
                 javascriptMode: JavascriptMode.unrestricted, // 자바스크립트 온
-                gestureNavigationEnabled: true, // 제스쳐
-                javascriptChannels: <JavascriptChannel>{ // 양방향통
+                javascriptChannels: <JavascriptChannel>{ // 양방향통신
                   _baseJavascript(context),
                 },
                 debuggingEnabled: true, // debug
 
                 onPageStarted: (url){
-
+                  _url = url;
                   setState(() {
                     isLoading = true;
                   });
@@ -95,14 +94,14 @@ class _ViewState extends State<ViewWidget> {
         var future = _webViewController.canGoBack();
         future.then((canGoBack) {
           if (canGoBack) {
-            _webViewController.goBack();
-          } else {
-            if (Platform.isAndroid) {
-              showDialog(
+            // 메인에서 뒤로가기
+            if(_url == (serverURL + "/main")) {
+              if (Platform.isAndroid) {
+                showDialog(
                   context: context,
                   builder: (context) =>
                       AlertDialog(
-                        title: Text('정말 산타를 종료하시겠어요?'),
+                        title: Text('산타를 종료하시겠어요?'),
                         actions: <Widget>[
                           FlatButton(
                             onPressed: () {
@@ -118,6 +117,18 @@ class _ViewState extends State<ViewWidget> {
                           ),
                         ],
                       ));
+              }
+            }else if(_url == (serverURL + "/chat/list") || _url == (serverURL + "/board/list") || _url == (serverURL + "/profile") || _url == (serverURL + "/map") || _url == (serverURL + "/mt/list") || _url == (serverURL + "/mt/favorite") || _url == (serverURL + "/mt/request") || _url.contains((serverURL + "/map/climb"))){
+              var locationDatas = 'flutterNavigate("/main")';
+              _webViewController.evaluateJavascript(locationDatas);
+            }else if(_url.contains("/board/detail/")){ // 게시판 상세에서 뒤로가기
+              var locationDatas = 'flutterNavigate("/board/list")';
+              _webViewController.evaluateJavascript(locationDatas);
+            }else if(_url.contains("/mt/detail/")){ // 산 상세에서 뒤로가기
+              var locationDatas = 'flutterNavigate("/mt/list")';
+              _webViewController.evaluateJavascript(locationDatas);
+            }else{
+              _webViewController.goBack();
             }
           }
         });
@@ -141,8 +152,10 @@ class _ViewState extends State<ViewWidget> {
 
           }else if(message.message == "mailto"){
             launch('mailto:2017253083@yonsei.ac.kr', forceWebView: false, forceSafariVC: false);//범철 mailto
+          }else if(message.message == "policy"){
+            var locationDatas = 'flutterNavigate("https://sites.google.com/view/santa-community")';
+            _webViewController.evaluateJavascript(locationDatas);
           }else if(message.message == "location"){ // 위치정보 받아오기
-
             Position position =  await _getGeoLocationPosition();
 
             var locationData = 'flutterLocation("'+position.latitude.toString()+'","'+position.longitude.toString()+'")';
@@ -151,15 +164,10 @@ class _ViewState extends State<ViewWidget> {
           }else if(message.message == "climb"){ // 등산시작
             if(climbFlag == false){
               climbFlag = true; // Flag 변경
-              _timer = Timer.periodic(new Duration(seconds: 20), (timer) async {
+              _timer = Timer.periodic(new Duration(seconds: 10), (timer) async {
                 Position position =  await _getGeoLocationPosition();
-                // 고도
-                loc.Location location = loc.Location();
-                loc.LocationData locationData = await location.getLocation();
-                print("locationData = "+ locationData.toString());
-                print("positionData = "+ position.toString());
 
-                var locationDatas = 'climbLocation("'+position.latitude.toString()+'","'+position.longitude.toString()+'","'+locationData.toString()+'")';
+                var locationDatas = 'climbLocation("'+position.latitude.toString()+'","'+position.longitude.toString()+'")';
                 _webViewController.evaluateJavascript(locationDatas);
                 if(climbFlag == false){
                   timer.cancel();
@@ -167,6 +175,9 @@ class _ViewState extends State<ViewWidget> {
               });
             }
 
+          }else if(message.message == "permissionAlways"){
+            loc.Location location = loc.Location();
+            bool locationData = await location.enableBackgroundMode();
           }else if(message.message == "dismiss"){ // 등산종료
             climbFlag = false;
           }else{

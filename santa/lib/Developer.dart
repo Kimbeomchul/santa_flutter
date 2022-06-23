@@ -26,7 +26,7 @@ class _AboutUsState extends State<AboutUs> {
                   background: Container(
                     decoration: BoxDecoration(
                         image: DecorationImage(
-                            image: AssetImage('assets/Design.jpeg'),
+                            image: AssetImage('assets/Design.png'),
                             fit: BoxFit.cover
                         )
                     ),
@@ -76,7 +76,7 @@ class _AboutUsState extends State<AboutUs> {
                         Text("Update", style: TextStyle(color: Colors.white, fontSize: 18, fontWeight: FontWeight.bold),
                         ),
                         SizedBox(height: 10,),
-                        Text("May, 22th 2022,  Version 0.0.1", style: TextStyle(color: Colors.grey),
+                        Text("June, 20th 2022,  Version 0.0.5", style: TextStyle(color: Colors.grey),
                         ),
                         SizedBox(height: 20,),
                         Text("Developer", style: TextStyle(color: Colors.white, fontSize: 18, fontWeight: FontWeight.bold),
@@ -103,6 +103,11 @@ class _AboutUsState extends State<AboutUs> {
                             ),
                           ],
                         ),
+                        SizedBox(height: 20,),
+                        Text("Contributors", style: TextStyle(color: Colors.white, fontSize: 18, fontWeight: FontWeight.bold),
+                        ),
+                        SizedBox(height: 4,),
+
                         Row(
                           children: [
                             Text("홍두표 ", style: TextStyle(color: Colors.grey,fontSize: 14),
@@ -124,10 +129,60 @@ class _AboutUsState extends State<AboutUs> {
                           ],
                         ),
                         SizedBox(height: 20,),
+                        Text("Others", style: TextStyle(color: Colors.white, fontSize: 18, fontWeight: FontWeight.bold),
+                        ),
+                        SizedBox(height: 4,),
+                        Row(
+                          children: [
+                            Text("김지향 - Design", style: TextStyle(color: Colors.grey,fontSize: 14),
+                            ),
+                            IconButton(
+                              // Use the MdiIcons class for the IconData
+                                icon: new Icon(MdiIcons.instagram,color: Colors.grey,),
+                                onPressed: () {
+                                  launch('https://www.instagram.com/ji_hyang_o', forceWebView: false, forceSafariVC: false);
+                                }
+                            ),
+                          ],
+                        ),
+                        Row(
+                          children: [
+                            Text("전주환 - Tester", style: TextStyle(color: Colors.grey,fontSize: 14),
+                            ),
+                            IconButton(
+                              // Use the MdiIcons class for the IconData
+                                icon: new Icon(MdiIcons.instagram,color: Colors.grey,),
+                                onPressed: () {
+                                  launch('https://www.instagram.com/joohwanjeon', forceWebView: false, forceSafariVC: false);
+                                }
+                            ),
+                            IconButton(
+                              // Use the MdiIcons class for the IconData
+                                icon: new Icon(MdiIcons.github,color: Colors.grey,),
+                                onPressed: () {
+                                  launch('https://github.com/joohwan812', forceWebView: true, forceSafariVC: true);
+                                }
+                            ),
+                          ],
+                        ),
+                        Row(
+                          children: [
+                            Text("박지은 - Tester", style: TextStyle(color: Colors.grey,fontSize: 14),
+                            ),
+                            IconButton(
+                              // Use the MdiIcons class for the IconData
+                                icon: new Icon(MdiIcons.instagram,color: Colors.grey,),
+                                onPressed: () {
+                                  launch('https://www.instagram.com/zxcjun30', forceWebView: false, forceSafariVC: false);
+                                }
+                            ),
+                          ],
+                        ),
+                        SizedBox(height: 20,),
                         Text("Used", style: TextStyle(color: Colors.white, fontSize: 18, fontWeight: FontWeight.bold),
                         ),
                         SizedBox(height: 10,),
-                        Text("Frontend : Thymeleaf , Flutter(Webview)", style: TextStyle(color: Colors.grey),
+                        Text("Frontend : Thymeleaf , Flutter , Vuejs(chat)", style: TextStyle(color: Colors.grey),
                         ),
                         Text("Backend : Springboot", style: TextStyle(color: Colors.grey),
                         ),
@@ -135,9 +190,9 @@ class _AboutUsState extends State<AboutUs> {
                         ),
                         Text("Server : AWS EC2", style: TextStyle(color: Colors.grey),
                         ),
-                        Text("Version : v0.0.1", style: TextStyle(color: Colors.grey),
+                        Text("Version : v0.0.5", style: TextStyle(color: Colors.grey),
                         ),
-                        Text("Others : Docker , Jenkins , Jira , Figma", style: TextStyle(color: Colors.grey),
+                        Text("Others : Docker , Jenkins , Git ,Figma", style: TextStyle(color: Colors.grey),
                         ),
                         SizedBox(height: 120,)
                       ],
