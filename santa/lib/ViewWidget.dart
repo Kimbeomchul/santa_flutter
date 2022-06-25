@@ -48,7 +48,6 @@ class _ViewState extends State<ViewWidget> {
                   _baseJavascript(context),
                 },
                 debuggingEnabled: true, // debug
-
                 onPageStarted: (url){
                   _url = url;
                   setState(() {
@@ -74,9 +73,7 @@ class _ViewState extends State<ViewWidget> {
                       );
                     }
                   }
-
                   print("page loaded = " + url);
-
                   setState(() {
                     isLoading = false;
                   });
@@ -118,7 +115,7 @@ class _ViewState extends State<ViewWidget> {
                         ],
                       ));
               }
-            }else if(_url == (serverURL + "/chat/list") || _url == (serverURL + "/board/list") || _url == (serverURL + "/profile") || _url == (serverURL + "/map") || _url == (serverURL + "/mt/list") || _url == (serverURL + "/mt/favorite") || _url == (serverURL + "/mt/request") || _url.contains((serverURL + "/map/climb"))){
+            }else if(_url == (serverURL + "/chat/list") || _url == (serverURL + "/board/list") || _url == (serverURL + "/profile") || _url == (serverURL + "/map") || _url == (serverURL + "/mt/list") || _url == (serverURL + "/mt/favorite") || _url == (serverURL + "/mt/request") || _url.contains("/map/climb") || _url.contains("/sign/")){
               var locationDatas = 'flutterNavigate("/main")';
               _webViewController.evaluateJavascript(locationDatas);
             }else if(_url.contains("/board/detail/")){ // 게시판 상세에서 뒤로가기
@@ -193,8 +190,6 @@ class _ViewState extends State<ViewWidget> {
         });
   }
 
-
-
   getPermission() async{
     Map<per.Permission, per.PermissionStatus> statues =await [per.Permission.storage , per.Permission.locationWhenInUse].request();
     if (statues.values.every((element) => element.isGranted)) {
@@ -204,9 +199,6 @@ class _ViewState extends State<ViewWidget> {
     print("Permission Fail");
     return 'fail';
   }
-
-
-
 
   // 위치 불러오기
   _getGeoLocationPosition() async {

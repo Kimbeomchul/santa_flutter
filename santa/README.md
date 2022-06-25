@@ -1,6 +1,6 @@
 # santa
 
-santaㅋ
+santa
 
 ## Getting Started
 

@@ -76,7 +76,7 @@ class _AboutUsState extends State<AboutUs> {
                         Text("Update", style: TextStyle(color: Colors.white, fontSize: 18, fontWeight: FontWeight.bold),
                         ),
                         SizedBox(height: 10,),
-                        Text("June, 20th 2022,  Version 0.0.5", style: TextStyle(color: Colors.grey),
+                        Text("June, 24th 2022,  Version: 0.0.6 --Beta", style: TextStyle(color: Colors.grey),
                         ),
                         SizedBox(height: 20,),
                         Text("Developer", style: TextStyle(color: Colors.white, fontSize: 18, fontWeight: FontWeight.bold),
